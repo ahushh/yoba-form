@@ -1,4 +1,4 @@
-import * as validate from 'validate.js'
+import validate from 'validate.js'
 const reduce = require('lodash/reduce')
 
 const PRICE_PATTERN = `^\\d{0,6}\.?\\d{1,2}?$`
