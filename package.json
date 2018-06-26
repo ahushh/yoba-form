@@ -1,18 +1,18 @@
 {
   "name": "yoba-form",
   "version": "0.0.0",
-  "description": "",
-  "keywords": [],
+  "description": "It's form library. It's functional. It's YOBA.",
+  "keywords": ["react", "forms"],
   "main": "dist/yoba-form.umd.js",
   "module": "dist/yoba-form.es5.js",
   "typings": "dist/types/yoba-form.d.ts",
   "files": [
     "dist"
   ],
-  "author": "Alexandr Polyakov <alexandr.p@cronix.ms>",
+  "author": "Alexandr Polyakov <ahushh@gmail.com>",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/ahushh/yoba-form"
   },
   "license": "MIT",
   "engines": {
