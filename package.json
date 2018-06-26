@@ -1,6 +1,6 @@
 {
   "name": "yoba-form",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "It's form library. It's functional. It's YOBA.",
   "keywords": ["react", "forms"],
   "main": "dist/yoba-form.umd.js",
