@@ -24,6 +24,12 @@ export type FormFields<T = any> = {
   };
 };
 
+export type FormFieldComponentProps<T = any> = {
+  onChange: (event: any, value: T) => void;
+  errors: string[];
+  value: T;
+}
+
 export type FormArray<T> = FormValues<T>[];
 
 export type FormValues<T = any> = {
@@ -71,31 +77,6 @@ export const runAllValidators = (validators: SyncValidator[] | SyncValidator, va
   return Array.isArray(validators) ?
     validators.reduce((a: string[], v) => [...a, ...v(value, allValues)], []) :
     validators(value, allValues);
-};
-
-export const validateFormValues = <T extends Object>(fields: FormFields<T>, values: FormValues<T>): FormErrors<T> => {
-  const errors = {} as FormErrors<T>;
-  Object.keys(values).forEach((key: string) => {
-    if (fields[key as keyof T] && fields[key as keyof T].validators) {
-      const errorsList = runAllValidators(fields[key as keyof T].validators as SyncValidator, values[key as keyof T], values);
-      errors[key as keyof T] = errorsList;
-    }
-  });
-  return errors;
-};
-
-export const isFormValid = <T extends Object>(fields: FormFields<T>, values: FormValues<T>): boolean => {
-  let formValidationErrors = Object.keys(values).reduce((messages: string[], key) => {
-    // console.error('messages', messages, 'key', key);
-    if (fields[key as keyof T] && fields[key as keyof T].validators) {
-      const newErrors = runAllValidators(fields[key as keyof T].validators as SyncValidator, values[key as keyof T], values);
-      // console.error('newErrors', newErrors);
-      return [...messages, ...newErrors];
-    }
-    return messages;
-  }, []);
-  // console.warn('Validation check: ', formValidationErrors);
-  return !Boolean(formValidationErrors.length);
 };
 
 export const withFormCreator = <T extends any = any>(
